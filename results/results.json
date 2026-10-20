@@ -1,0 +1,74 @@
+[
+  {
+    "mode": "secure(HMAC)",
+    "duration_s": 40,
+    "outage_s": [
+      10,
+      20
+    ],
+    "security_check_status": {
+      "valid": 200,
+      "tampered": 401,
+      "replayed": 409,
+      "unsigned": 401
+    },
+    "response_time": {
+      "sensor_rtt_ms_p50": 2022.4190999997518,
+      "sensor_rtt_ms_p95": 2032.669100000021,
+      "sensor_rtt_ms_p99": 2032.669100000021,
+      "edge_decision_us_p50": 123.19999950705096,
+      "edge_decision_us_p95": 236.80000003878376,
+      "hmac_verify_us_mean": 35.170833352064314,
+      "alert_e2e_ms_p50_live": null,
+      "alert_e2e_ms_p95_live": null,
+      "alerts_total": 0,
+      "alerts_delayed_gt2s": 0,
+      "alert_e2e_ms_max_delayed": null
+    },
+    "detection": {
+      "precision": null,
+      "recall": null,
+      "tp": 0,
+      "fp": 0,
+      "fn": 0
+    },
+    "network": {
+      "readings": 21,
+      "naive_msgs": 21,
+      "edge_msgs": 5,
+      "naive_bytes": 4649,
+      "edge_bytes": 1862,
+      "byte_reduction_pct": 59.95,
+      "msg_reduction_pct": 76.19,
+      "dashboard_bytes_rx": 1262,
+      "dashboard_events_rx": 5
+    },
+    "resilience": {
+      "max_queue_depth": 1,
+      "send_failures": 3,
+      "final_queue_depth": 0,
+      "delivery_delay_s_p50": 2.0517289638519287,
+      "delivery_delay_s_max": 5.590878486633301,
+      "events_delivered": 5,
+      "sensor_errors": 0
+    },
+    "resources": {
+      "edge": {
+        "cpu_pct_mean": 0.21,
+        "cpu_pct_max": 3.1,
+        "rss_mb_max": 54.1
+      },
+      "dashboard": {
+        "cpu_pct_mean": 0.04,
+        "cpu_pct_max": 1.6,
+        "rss_mb_max": 41.8
+      },
+      "sensor": {
+        "cpu_pct_mean": 1.0,
+        "cpu_pct_max": 28.1,
+        "rss_mb_max": 36.1
+      }
+    },
+    "disk_queue_db_kb": 4.0
+  }
+]

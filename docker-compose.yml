@@ -1,0 +1,28 @@
+services:
+  dashboard:
+    build: ./dashboard
+    environment:
+      EVENTHUB_CONNECTION_STRING: ${EVENTHUB_CONNECTION_STRING:-}
+    ports: ["8000:8000"]
+  edge:
+    build: ./edge
+    environment:
+      SENSOR_SHARED_KEY: ${SENSOR_SHARED_KEY}
+      ADMIN_KEY: ${ADMIN_KEY}
+      SECURE: ${SECURE:-1}
+      IOTHUB_DEVICE_CONNECTION_STRING: ${IOTHUB_DEVICE_CONNECTION_STRING:-}
+      DASHBOARD_URL: http://dashboard:8000
+    volumes: ["edge-data:/data"]   # queue survives container restarts
+    cpus: 0.5                      # emulate a constrained gateway
+    mem_limit: 128m
+    ports: ["8080:8080"]           # /metrics, /admin/network
+  sensor:
+    build: ./sensor
+    environment:
+      SENSOR_SHARED_KEY: ${SENSOR_SHARED_KEY}
+      SECURE: ${SECURE:-1}
+      EDGE_URL: http://edge:8080
+      RATE_HZ: "20"
+    depends_on: [edge]
+volumes:
+  edge-data:
